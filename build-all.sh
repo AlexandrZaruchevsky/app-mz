@@ -24,5 +24,7 @@ fi
 #./build-backend.sh
 #./build-frontend.sh
 #./build-docker.sh
+mkdir "$APP_FOLDER/front-build"
+mkdir "$APP_FOLDER/mysql/backup"
 cp "$BACKEND_FOLDER/target/mz-0.0.1-SNAPSHOT-spring-boot.jar" "$APP_FOLDER/back-app/app.jar"
 cp -r "$FRONTEND_FOLDER/dist/" "$APP_FOLDER/front-build"
