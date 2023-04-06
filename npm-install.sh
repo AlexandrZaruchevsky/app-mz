@@ -1,3 +1,5 @@
+DIR_CURRENT=$(pwd)
+DIR_DOWNLOAD="$DIR_CURRENT/download"
 sudo apt-get -y update
 sudo apt-get -y install curl
 cd $DIR_DOWNLOAD
