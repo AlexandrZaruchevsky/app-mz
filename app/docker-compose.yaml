@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:8.0.32
+    cap_add:
+      - SYS_NICE
+    env_file:
+      - ./mysql/setup.env
+    ports:
+      - 3306:3306
+    expose:
+      - '3306'
+    restart: always
+    volumes:
+      - my-db:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+  app:
+    build: ./back-app
+    ports:
+      - 8099:8099
+    env_file:
+      - ./back-app/setup.env
+    restart: always
+    depends_on:
+      - db
+  web:
+    image: nginx
+    volumes:
+      - ./front-build/dist:/usr/share/nginx/html
+      - ./front-app:/etc/nginx/conf.d
+    ports:
+      - "8888:80"
+    environment:
+      - NGINX_HOST=support.ru
+      - NGINX_PORT=80
+    depends_on:
+      - app
+    restart: always
+volumes:
+  my-db:

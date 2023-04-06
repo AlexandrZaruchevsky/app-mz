@@ -1,0 +1,9 @@
+.idea
+maven
+java
+frontend
+download
+backend
+app/back-app/app.jar
+app/front-build/*
+app/mysql/backup/*

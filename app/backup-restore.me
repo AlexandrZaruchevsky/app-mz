@@ -1,0 +1,5 @@
+Backup all base
+docker exec kladr_db_1 sh -c 'exec mysqldump --all-databases -uroot -p$MYSQL_ROOT_PASSWORD' > ~/docker/kladr/mysql/backup/backup-$(date +%Y-%m-%d-%H.%M.%S).sql
+
+Restore all base
+docker exec -i kladr_db_1 sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ~/docker/kladr/mysql/backup/backup-2022-04-23-19.27.10.sql
